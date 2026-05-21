@@ -1,0 +1,37 @@
+{
+  "version": 2,
+  "public": true,
+  "github": {
+    "enabled": false
+  },
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/services",
+      "dest": "/services.html"
+    },
+    {
+      "src": "/purpose",
+      "dest": "/purpose.html"
+    },
+    {
+      "src": "/access-to",
+      "dest": "/access-to.html"
+    },
+    {
+      "src": "/insights",
+      "dest": "/insights.html"
+    },
+    {
+      "src": "/connect",
+      "dest": "/connect.html"
+    },
+    {
+      "src": "/([^/]+)",
+      "dest": "/$1.html"
+    }
+  ]
+}
