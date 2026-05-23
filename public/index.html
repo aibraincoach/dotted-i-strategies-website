@@ -100,6 +100,23 @@
   .hl-plum    { color: var(--plum); }
   .hl-slate   { color: var(--slate); }
 
+  /* Brand accent — orange dot on dotless ı */
+  .i-accent {
+    position: relative;
+    display: inline-block;
+  }
+  .i-accent::before {
+    content: "";
+    position: absolute;
+    top: 0.05em;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0.18em;
+    height: 0.18em;
+    background: var(--mustard);
+    border-radius: 50%;
+  }
+
   /* ============================================================
      TOPOGRAPHIC LINE TEXTURE — soft, used as watermark on teal
      ============================================================ */
@@ -1092,9 +1109,9 @@
 
       <div>
         <h1 class="statement">
-          Fractional
+          Fract<span class="i-accent">ı</span>onal
           <span class="hl-mustard">leadership</span>
-          for <span class="hl-peach">high-stakes</span>
+          for <span class="hl-peach">h<span class="i-accent">ı</span>gh-stakes</span>
           mandates.
         </h1>
 
@@ -1211,7 +1228,7 @@
           <path fill="#F2A6A2" opacity="0.18" d="M 120 12 C 180 4, 218 70, 208 130 C 198 190, 130 218, 75 200 C 20 182, 0 120, 18 70 C 36 20, 70 18, 120 12 Z"/>
         </svg>
         <span class="num">02 — Transact</span>
-        <h3>M&amp;A advisory<br/>&amp; <em>due diligence</em>.</h3>
+        <h3>M&amp;A advisory<br/>&amp; <em>due d<span class="i-accent">ı</span>ligence</em>.</h3>
         <p>Deal management, financial modelling, due diligence, and transaction support across Canada, the United States, the United Kingdom, and the EU. The firm has sat on both sides of the table and knows the operational reasons deals fail, and the moves that close them.</p>
         <div class="scope-head">Ideal for</div>
         <ul>
@@ -1359,7 +1376,7 @@
       </div>
 
       <div class="principal-bio">
-        <h3>The firm <em>is</em> the principal. The principal <em>is</em> the firm.</h3>
+        <h3>The firm <em><span class="i-accent">ı</span>s</em> the principal. The principal <em><span class="i-accent">ı</span>s</em> the firm.</h3>
 
         <p class="lead">The work is taken in full. The rooms are the real ones. The brief on the desk is the brief that gets delivered. <em>No subcontracting. No deck factories.</em> No proxies.</p>
 
