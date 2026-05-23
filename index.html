@@ -6,6 +6,8 @@
 <title>Dotted i Strategies | Fractional CEO &amp; COO Advisory | Global</title>
 <meta name="description" content="Fractional CEO &amp; COO advisory for executives, boards, founders/investors. M&amp;A, transformation, and cross-border market entry in Tech, Defence, Energy, MedTech."/>
 <meta name="author" content="Dotted I Strategies"/>
+<link rel="canonical" href="https://dottedistrategies.com/"/>
+<meta name="robots" content="index, follow"/>
 <link rel="manifest" href="manifest.webmanifest"/>
 
 <link rel="icon" href="./assets/images/favicon-16.png" sizes="16x16"/>
@@ -692,13 +694,17 @@
     padding: 0;
     margin: 24px 0 0;
   }
-  .archive li {
+  .archive li a {
     display: grid;
     grid-template-columns: 130px 1fr 240px 40px;
     gap: 32px;
     padding: 22px 0;
-    border-bottom: 1px solid var(--rule-teal);
     align-items: baseline;
+    color: inherit;
+    text-decoration: none;
+  }
+  .archive li {
+    border-bottom: 1px solid var(--rule-teal);
     transition: padding 160ms ease, background 200ms ease;
     cursor: pointer;
   }
@@ -739,6 +745,10 @@
     font-size: 18px;
     transition: color 160ms ease, transform 160ms ease;
   }
+
+  /* Hide dossier placeholder rows */
+  .dossier .v .tk { display: none; }
+  .dossier .v .line:has(.tk:only-child) { display: none; }
 
   .archive-foot {
     margin-top: 32px;
@@ -1000,7 +1010,7 @@
     .section-head .desc { justify-self: start; }
     .principal-grid { grid-template-columns: 1fr; gap: 48px; }
     .contact-grid { grid-template-columns: 1fr; gap: 56px; }
-    .archive li { grid-template-columns: 100px 1fr; gap: 12px 20px; }
+    .archive li a { grid-template-columns: 100px 1fr; gap: 12px 20px; }
     .archive li .meta, .archive li .arrow { grid-column: 2; text-align: left; }
   }
   @media (max-width: 720px) {
@@ -1008,7 +1018,8 @@
     .hero { padding: 56px 0 80px; }
     h1.statement { font-size: 56px; }
     nav.primary { gap: 14px; font-size: 13px; }
-    nav.primary a:not(.contact-btn):nth-child(n+3) { display: none; }
+    .archive li a { grid-template-columns: 1fr; gap: 6px; }
+    .archive li .meta, .archive li .arrow { grid-column: auto; text-align: left; }
     .dossier .row { grid-template-columns: 1fr; gap: 6px; }
     .contact-meta .row { grid-template-columns: 1fr; gap: 6px; }
   }
@@ -1265,7 +1276,7 @@
           <a href="brief.html">Read the brief
             <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 5h12M9 1l4 4-4 4"/></svg>
           </a>
-          <a class="ghost" href="#" download>Download PDF · 1.2 MB
+          <a class="ghost" href="#">Download PDF · 1.2 MB
             <svg width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 1v8M1 6l4 4 4-4M0 11h10"/></svg>
           </a>
         </div>
@@ -1283,30 +1294,30 @@
     </article>
 
     <ul class="archive">
-      <li>
+      <li><a href="#">
         <div class="date">14 Mar 2026</div>
         <div class="title">A Stronger Confederation. Why Alberta's push for autonomy strengthens Canada.</div>
         <div class="meta">Federalism · Policy · 9 min</div>
         <div class="arrow">→</div>
-      </li>
-      <li>
+      </a></li>
+      <li><a href="#">
         <div class="date">06 Feb 2026</div>
         <div class="title">The Procurement Gap. Canadian defence industrial capacity in the five years that matter.</div>
         <div class="meta">Defence · Industrial · 11 min</div>
         <div class="arrow">→</div>
-      </li>
-      <li>
+      </a></li>
+      <li><a href="#">
         <div class="date">18 Jan 2026</div>
         <div class="title">Dual-Use at the Border. What CUSMA review means for cross-border MedTech and AI.</div>
         <div class="meta">Dual-Use · Trade · 8 min</div>
         <div class="arrow">→</div>
-      </li>
-      <li>
+      </a></li>
+      <li><a href="#">
         <div class="date">03 Dec 2025</div>
         <div class="title">Crown Corps and the Operator Class. Governance for state-adjacent companies.</div>
         <div class="meta">Governance · Crown · 10 min</div>
         <div class="arrow">→</div>
-      </li>
+      </a></li>
     </ul>
 
     <div class="archive-foot">
