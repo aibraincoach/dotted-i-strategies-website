@@ -152,6 +152,17 @@
     border-radius: 50%;
   }
 
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--bone);
+    font-size: 22px;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+  }
+
   nav.primary {
     display: flex; align-items: center; gap: 32px;
     font-size: 14px; font-weight: 600; letter-spacing: -0.005em;
@@ -694,19 +705,14 @@
     padding: 0;
     margin: 24px 0 0;
   }
-  .archive li a {
+  .archive li {
     display: grid;
     grid-template-columns: 130px 1fr 240px 40px;
     gap: 32px;
     padding: 22px 0;
-    align-items: baseline;
-    color: inherit;
-    text-decoration: none;
-  }
-  .archive li {
     border-bottom: 1px solid var(--rule-teal);
+    align-items: baseline;
     transition: padding 160ms ease, background 200ms ease;
-    cursor: pointer;
   }
   .archive li:hover {
     padding-left: 14px;
@@ -1010,15 +1016,34 @@
     .section-head .desc { justify-self: start; }
     .principal-grid { grid-template-columns: 1fr; gap: 48px; }
     .contact-grid { grid-template-columns: 1fr; gap: 56px; }
-    .archive li a { grid-template-columns: 100px 1fr; gap: 12px 20px; }
+    .archive li { grid-template-columns: 100px 1fr; gap: 12px 20px; }
     .archive li .meta, .archive li .arrow { grid-column: 2; text-align: left; }
   }
   @media (max-width: 720px) {
     .section { padding: 80px 0; }
     .hero { padding: 56px 0 80px; }
     h1.statement { font-size: 56px; }
-    nav.primary { gap: 14px; font-size: 13px; }
-    .archive li a { grid-template-columns: 1fr; gap: 6px; }
+    .menu-toggle { display: block; }
+    nav.primary {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--teal);
+      border-bottom: 1px solid var(--rule-teal);
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      padding: 8px var(--pad-x) 16px;
+      font-size: 15px;
+      z-index: 79;
+    }
+    nav.primary.open { display: flex; }
+    nav.primary a { padding: 10px 0; width: 100%; border-bottom: 1px solid var(--rule-teal); }
+    nav.primary a:last-child { border-bottom: none; }
+    nav.primary .contact-btn { margin-top: 8px; }
+    .archive li { grid-template-columns: 1fr; gap: 6px; }
     .archive li .meta, .archive li .arrow { grid-column: auto; text-align: left; }
     .dossier .row { grid-template-columns: 1fr; gap: 6px; }
     .contact-meta .row { grid-template-columns: 1fr; gap: 6px; }
@@ -1061,7 +1086,8 @@
     <a href="index.html" class="wordmark" aria-label="Dotted i Strategies">
       Dotted&nbsp;<span class="i">i</span>&nbsp;Strategies
     </a>
-    <nav class="primary" aria-label="Primary">
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">☰</button>
+    <nav class="primary" id="primary-nav" aria-label="Primary">
       <a href="#practice">Practice</a>
       <a href="#insights">Insights</a>
       <a href="#principal">Brad Robson</a>
@@ -1114,7 +1140,7 @@
           <path fill="#E89B36" d="M 80 60 C 200 -10, 380 30, 460 130 C 540 230, 470 380, 380 440 C 290 500, 150 480, 70 410 C -10 340, -20 230, 20 150 C 40 110, 50 80, 80 60 Z"/>
         </svg>
         <div class="portrait" aria-label="Portrait of Brad Robson">
-          <img src="./assets/images/brad-robson-portrait.png" alt="Brad Robson portrait" />
+          <img src="./assets/images/brad-robson-portrait.png" alt="Brad Robson portrait" width="1122" height="1402" />
         </div>
         <div class="dotfield"></div>
       </div>
@@ -1294,34 +1320,34 @@
     </article>
 
     <ul class="archive">
-      <li><a href="#">
+      <li>
         <div class="date">14 Mar 2026</div>
         <div class="title">A Stronger Confederation. Why Alberta's push for autonomy strengthens Canada.</div>
         <div class="meta">Federalism · Policy · 9 min</div>
         <div class="arrow">→</div>
-      </a></li>
-      <li><a href="#">
+      </li>
+      <li>
         <div class="date">06 Feb 2026</div>
         <div class="title">The Procurement Gap. Canadian defence industrial capacity in the five years that matter.</div>
         <div class="meta">Defence · Industrial · 11 min</div>
         <div class="arrow">→</div>
-      </a></li>
-      <li><a href="#">
+      </li>
+      <li>
         <div class="date">18 Jan 2026</div>
         <div class="title">Dual-Use at the Border. What CUSMA review means for cross-border MedTech and AI.</div>
         <div class="meta">Dual-Use · Trade · 8 min</div>
         <div class="arrow">→</div>
-      </a></li>
-      <li><a href="#">
+      </li>
+      <li>
         <div class="date">03 Dec 2025</div>
         <div class="title">Crown Corps and the Operator Class. Governance for state-adjacent companies.</div>
         <div class="meta">Governance · Crown · 10 min</div>
         <div class="arrow">→</div>
-      </a></li>
+      </li>
     </ul>
 
     <div class="archive-foot">
-      <span>Showing 5 of 11 published briefs.</span>
+      <span>Showing 4 of 11 published briefs.</span>
       <a href="#">View the full archive →</a>
     </div>
 
@@ -1358,7 +1384,7 @@
           <path fill="#6B95A4" d="M 70 50 C 200 -20, 380 20, 460 130 C 540 240, 480 390, 370 450 C 260 510, 130 480, 60 400 C -10 320, -10 200, 30 130 C 40 100, 50 75, 70 50 Z"/>
         </svg>
         <div class="portrait" aria-label="Portrait of Brad Robson">
-          <img src="./assets/images/brad-robson-portrait.png" alt="Brad Robson portrait" />
+          <img src="./assets/images/brad-robson-portrait.png" alt="Brad Robson portrait" width="1122" height="1402" />
         </div>
         <div class="dotfield"></div>
       </div>
@@ -1486,5 +1512,17 @@
   </div>
 </footer>
 
+<script>
+  (function() {
+    var toggle = document.querySelector('.menu-toggle');
+    var nav = document.querySelector('nav.primary');
+    if (!toggle || !nav) return;
+    toggle.addEventListener('click', function() {
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+      toggle.textContent = open ? '✕' : '☰';
+    });
+  })();
+</script>
 </body>
 </html>
