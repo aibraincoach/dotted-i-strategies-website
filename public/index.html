@@ -101,28 +101,8 @@
   .hl-slate   { color: var(--slate); }
 
   /* ============================================================
-     DOT GRID TEXTURE — the literal "dotted i" motif as background
+     TOPOGRAPHIC LINE TEXTURE — soft, used as watermark on teal
      ============================================================ */
-  .dotfield {
-    position: absolute;
-    pointer-events: none;
-    background-image: radial-gradient(circle, var(--dot-color, rgba(255,255,255,0.22)) 1.2px, transparent 1.6px);
-    background-size: 12px 12px;
-    background-position: 0 0;
-    -webkit-mask-image: radial-gradient(ellipse at center, #000 35%, transparent 75%);
-    mask-image:         radial-gradient(ellipse at center, #000 35%, transparent 75%);
-  }
-
-  /* Tighten the existing instances so they read as stamps, not fields */
-  .hero .dotfield.tl           { width: 160px; height: 120px; }
-  .hero .dotfield.br           { width: 220px; height: 160px; }
-  .creds .dotfield.bl          { width: 140px; height: 100px; }
-  .portrait-blob .dotfield     { width: 110px; height: 110px; }
-  .featured-facts .dotfield    { width: 130px; height: 130px; }
-  .contact-meta .dotfield      { width: 130px; height: 130px; }
-  .principal-photo .dotfield   { width: 130px; height: 130px; }
-
-  /* Topographic line texture — soft, used as watermark on teal */
   .topo {
     position: absolute;
     inset: 0;
@@ -204,15 +184,6 @@
     overflow: hidden;
   }
   .hero .topo { z-index: 0; }
-  .hero .dotfield.tl {
-    top: 24px; left: var(--pad-x);
-    --dot-color: rgba(255,255,255,0.18);
-  }
-  .hero .dotfield.br {
-    right: var(--pad-x); bottom: 0;
-    --dot-color: rgba(232,155,54,0.22);
-  }
-
   .hero-inner { position: relative; z-index: 2; }
   .hero-grid {
     display: grid;
@@ -328,13 +299,6 @@
     display: block;
   }
 
-  .portrait-blob .dotfield {
-    bottom: -28px; right: -28px;
-    --dot-color: var(--peach);
-    z-index: 0;
-    opacity: 0.85;
-  }
-
   /* ============================================================
      WAVE DIVIDER (between sections)
      ============================================================ */
@@ -358,10 +322,6 @@
     overflow: hidden;
   }
   .creds .topo { opacity: 0.18; }
-  .creds .dotfield.bl {
-    bottom: 24px; left: var(--pad-x);
-    --dot-color: rgba(14,59,78,0.20);
-  }
   .creds-inner { position: relative; z-index: 2; }
   .creds-grid {
     display: grid;
@@ -687,11 +647,6 @@
     position: relative;
     overflow: hidden;
   }
-  .featured-facts .dotfield {
-    bottom: -30px; right: -30px;
-    --dot-color: rgba(232,155,54,0.25);
-    z-index: 0;
-  }
   .featured-facts .row {
     position: relative; z-index: 2;
     display: grid;
@@ -817,12 +772,6 @@
     display: block;
   }
 
-  .principal-photo .dotfield {
-    z-index: 0;
-    --dot-color: rgba(14,59,78,0.25);
-    bottom: -30px; left: -30px;
-  }
-
   .principal-bio h3 {
     font-size: clamp(32px, 3.8vw, 56px);
     font-weight: 800;
@@ -946,11 +895,6 @@
     padding: 8px 24px;
     position: relative;
     overflow: hidden;
-  }
-  .contact-meta .dotfield {
-    top: -30px; right: -30px;
-    --dot-color: rgba(177,74,111,0.30);
-    z-index: 0;
   }
   .contact-meta .row {
     position: relative; z-index: 2;
@@ -1147,9 +1091,6 @@
      =================================================== -->
 <section class="hero">
   <svg class="topo" viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice"><rect width="1600" height="800" fill="url(#topo-teal)"/></svg>
-  <div class="dotfield tl"></div>
-  <div class="dotfield br"></div>
-
   <div class="wrap hero-inner">
     <div class="hero-eyebrow">
       <span class="dot"></span>
@@ -1188,7 +1129,6 @@
         <div class="portrait" aria-label="Portrait of Brad Robson">
           <img src="./assets/images/brad-robson-portrait.png" alt="Brad Robson portrait" width="1122" height="1402" />
         </div>
-        <div class="dotfield"></div>
       </div>
 
     </div>
@@ -1207,8 +1147,6 @@
      =================================================== -->
 <section class="creds">
   <svg class="topo" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid slice"><rect width="1600" height="600" fill="url(#topo-bone)"/></svg>
-  <div class="dotfield bl"></div>
-
   <div class="wrap creds-inner creds-grid">
     <div>
       <span class="lab">Provenance</span>
@@ -1355,7 +1293,6 @@
       </div>
 
       <aside class="featured-facts">
-        <div class="dotfield"></div>
         <div class="row"><div class="k">Author</div><div class="v">Brad Robson</div></div>
         <div class="row"><div class="k">Length</div><div class="v">14 minutes · 4,200 words</div></div>
         <div class="row"><div class="k">Format</div><div class="v">PDF · footnoted &amp; cited</div></div>
@@ -1432,7 +1369,6 @@
         <div class="portrait" aria-label="Portrait of Brad Robson">
           <img src="./assets/images/brad-robson-portrait.png" alt="Brad Robson portrait" width="1122" height="1402" />
         </div>
-        <div class="dotfield"></div>
       </div>
 
       <div class="principal-bio">
@@ -1527,7 +1463,6 @@
 
       <div>
         <div class="contact-meta">
-          <div class="dotfield"></div>
           <div class="row"><div class="k">Direct</div><div class="v">connect@dottedistrategies.com</div></div>
           <div class="row"><div class="k">Based</div><div class="v">Calgary, Alberta, Canada</div></div>
           <div class="row"><div class="k">Hours</div><div class="v">Mon to Fri · on the client's clock</div></div>
