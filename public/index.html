@@ -68,8 +68,8 @@
     --sans: "Manrope", "Helvetica Neue", Helvetica, Arial, sans-serif;
     --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
 
-    --pad-x: clamp(20px, 4.4vw, 64px);
-    --col:   1440px;
+    --pad-x: clamp(32px, 5.2vw, 96px);
+    --col:   1240px;
   }
 
   * { box-sizing: border-box; }
@@ -106,10 +106,21 @@
   .dotfield {
     position: absolute;
     pointer-events: none;
-    background-image: radial-gradient(circle, var(--dot-color, rgba(255,255,255,0.16)) 1.1px, transparent 1.3px);
-    background-size: 14px 14px;
+    background-image: radial-gradient(circle, var(--dot-color, rgba(255,255,255,0.22)) 1.2px, transparent 1.6px);
+    background-size: 12px 12px;
     background-position: 0 0;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 35%, transparent 75%);
+    mask-image:         radial-gradient(ellipse at center, #000 35%, transparent 75%);
   }
+
+  /* Tighten the existing instances so they read as stamps, not fields */
+  .hero .dotfield.tl           { width: 160px; height: 120px; }
+  .hero .dotfield.br           { width: 220px; height: 160px; }
+  .creds .dotfield.bl          { width: 140px; height: 100px; }
+  .portrait-blob .dotfield     { width: 110px; height: 110px; }
+  .featured-facts .dotfield    { width: 130px; height: 130px; }
+  .contact-meta .dotfield      { width: 130px; height: 130px; }
+  .principal-photo .dotfield   { width: 130px; height: 130px; }
 
   /* Topographic line texture — soft, used as watermark on teal */
   .topo {
@@ -157,11 +168,14 @@
     background: none;
     border: none;
     color: var(--bone);
-    font-size: 22px;
     cursor: pointer;
     padding: 4px;
     line-height: 1;
   }
+  .menu-toggle svg { display: block; }
+  .menu-toggle .icon-close { display: none; }
+  .menu-toggle[aria-expanded="true"] .icon-open  { display: none; }
+  .menu-toggle[aria-expanded="true"] .icon-close { display: block; }
 
   nav.primary {
     display: flex; align-items: center; gap: 32px;
@@ -191,12 +205,10 @@
   .hero .topo { z-index: 0; }
   .hero .dotfield.tl {
     top: 24px; left: var(--pad-x);
-    width: 220px; height: 160px;
     --dot-color: rgba(255,255,255,0.18);
   }
   .hero .dotfield.br {
     right: var(--pad-x); bottom: 0;
-    width: 320px; height: 220px;
     --dot-color: rgba(232,155,54,0.22);
   }
 
@@ -227,7 +239,7 @@
   h1.statement {
     font-family: var(--sans);
     font-weight: 800;
-    font-size: clamp(52px, 8vw, 138px);
+    font-size: clamp(40px, 8vw, 138px);
     line-height: 0.93;
     letter-spacing: -0.038em;
     margin: 0 0 36px;
@@ -296,13 +308,16 @@
     width: 100%; height: 100%;
     z-index: 1;
   }
-  .portrait-blob .portrait {
+  .portrait-blob .portrait,
+  .principal-photo .portrait {
     position: absolute;
-    inset: 8% 6% 0 6%;
     z-index: 2;
-    -webkit-clip-path: path("M 240 10 C 360 0, 460 70, 470 200 C 480 330, 430 460, 320 480 C 210 500, 60 460, 30 340 C 0 220, 50 90, 150 40 C 195 18, 215 12, 240 10 Z");
-    clip-path: path("M 240 10 C 360 0, 460 70, 470 200 C 480 330, 430 460, 320 480 C 210 500, 60 460, 30 340 C 0 220, 50 90, 150 40 C 195 18, 215 12, 240 10 Z");
+    -webkit-clip-path: url(#blob-mask);
+    clip-path: url(#blob-mask);
     overflow: hidden;
+  }
+  .portrait-blob .portrait {
+    inset: 8% 6% 0 6%;
   }
   .portrait-blob .portrait img {
     width: 100%;
@@ -314,7 +329,6 @@
 
   .portrait-blob .dotfield {
     bottom: -28px; right: -28px;
-    width: 140px; height: 140px;
     --dot-color: var(--peach);
     z-index: 0;
     opacity: 0.85;
@@ -345,7 +359,6 @@
   .creds .topo { opacity: 0.18; }
   .creds .dotfield.bl {
     bottom: 24px; left: var(--pad-x);
-    width: 180px; height: 120px;
     --dot-color: rgba(14,59,78,0.20);
   }
   .creds-inner { position: relative; z-index: 2; }
@@ -675,7 +688,6 @@
   }
   .featured-facts .dotfield {
     bottom: -30px; right: -30px;
-    width: 160px; height: 160px;
     --dot-color: rgba(232,155,54,0.25);
     z-index: 0;
   }
@@ -794,12 +806,7 @@
     position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1;
   }
   .principal-photo .portrait {
-    position: absolute;
     inset: 7% 7% 0 7%;
-    z-index: 2;
-    -webkit-clip-path: path("M 240 14 C 360 4, 470 76, 470 200 C 480 330, 420 470, 310 478 C 200 490, 70 460, 30 340 C 0 220, 60 90, 160 40 C 200 20, 218 16, 240 14 Z");
-    clip-path: path("M 240 14 C 360 4, 470 76, 470 200 C 480 330, 420 470, 310 478 C 200 490, 70 460, 30 340 C 0 220, 60 90, 160 40 C 200 20, 218 16, 240 14 Z");
-    overflow: hidden;
   }
   .principal-photo .portrait img {
     width: 100%;
@@ -813,7 +820,6 @@
     z-index: 0;
     --dot-color: rgba(14,59,78,0.25);
     bottom: -30px; left: -30px;
-    width: 160px; height: 160px;
   }
 
   .principal-bio h3 {
@@ -942,7 +948,6 @@
   }
   .contact-meta .dotfield {
     top: -30px; right: -30px;
-    width: 160px; height: 160px;
     --dot-color: rgba(177,74,111,0.30);
     z-index: 0;
   }
@@ -1048,6 +1053,31 @@
     .dossier .row { grid-template-columns: 1fr; gap: 6px; }
     .contact-meta .row { grid-template-columns: 1fr; gap: 6px; }
   }
+  @media (max-width: 480px) {
+    .section { padding: 64px 0; }
+    .hero    { padding: 40px 0 56px; }
+    .creds   { padding: 56px 0 64px; }
+
+    h1.statement { font-size: 42px; letter-spacing: -0.032em; }
+    .hero-lede  { font-size: 18px; }
+    .section-head h2 { font-size: 36px; }
+    .featured h3    { font-size: 26px; }
+    .contact-lead   { font-size: 32px; }
+    .email-mega     { font-size: 20px; }
+
+    .portrait-blob { max-width: none; width: 88%; }
+
+    .hero-eyebrow { flex-wrap: wrap; gap: 8px 12px; }
+    .featured-meta { flex-wrap: wrap; gap: 6px 12px; }
+
+    .btn { padding: 14px 22px; font-size: 13px; }
+    .hero-cta { gap: 10px; }
+
+    .practice-card { padding: 28px 24px 26px; }
+    .featured-facts, .contact-meta { padding: 8px 18px; }
+
+    .wave { height: 48px; }
+  }
 </style>
 </head>
 <body>
@@ -1057,6 +1087,14 @@
      =================================================== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
+    <clipPath id="blob-mask" clipPathUnits="objectBoundingBox">
+      <path d="M 0.48 0.02
+               C 0.72 0.00, 0.94 0.14, 0.96 0.40
+               C 0.98 0.66, 0.86 0.92, 0.64 0.96
+               C 0.42 1.00, 0.12 0.94, 0.04 0.68
+               C -0.02 0.42, 0.10 0.18, 0.30 0.08
+               C 0.39 0.04, 0.43 0.03, 0.48 0.02 Z"/>
+    </clipPath>
     <pattern id="topo-teal" x="0" y="0" width="600" height="400" patternUnits="userSpaceOnUse">
       <path d="M -50 60 Q 100 0, 250 60 T 550 60 T 850 60" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
       <path d="M -50 110 Q 120 50, 270 110 T 570 110 T 870 110" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
@@ -1086,7 +1124,14 @@
     <a href="index.html" class="wordmark" aria-label="Dotted i Strategies">
       Dotted&nbsp;<span class="i">i</span>&nbsp;Strategies
     </a>
-    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">☰</button>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+      <svg class="icon-open"  width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M3 6h16M3 11h16M3 16h16"/>
+      </svg>
+      <svg class="icon-close" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M5 5l12 12M17 5L5 17"/>
+      </svg>
+    </button>
     <nav class="primary" id="primary-nav" aria-label="Primary">
       <a href="#practice">Practice</a>
       <a href="#insights">Insights</a>
@@ -1137,7 +1182,7 @@
       <div class="portrait-blob">
         <!-- Background blob, peach/orange, anchors the figure per the brief language -->
         <svg class="blob-bg" viewBox="0 0 500 500" preserveAspectRatio="none" aria-hidden="true">
-          <path fill="#E89B36" d="M 80 60 C 200 -10, 380 30, 460 130 C 540 230, 470 380, 380 440 C 290 500, 150 480, 70 410 C -10 340, -20 230, 20 150 C 40 110, 50 80, 80 60 Z"/>
+          <path fill="#E89B36" d="M 240 10 C 360 0, 470 70, 480 200 C 490 330, 430 460, 320 480 C 210 500, 60 470, 20 340 C -10 210, 50 90, 150 40 C 195 20, 215 15, 240 10 Z"/>
         </svg>
         <div class="portrait" aria-label="Portrait of Brad Robson">
           <img src="./assets/images/brad-robson-portrait.png" alt="Brad Robson portrait" width="1122" height="1402" />
@@ -1381,7 +1426,7 @@
 
       <div class="principal-photo">
         <svg class="blob-bg" viewBox="0 0 500 500" preserveAspectRatio="none" aria-hidden="true">
-          <path fill="#6B95A4" d="M 70 50 C 200 -20, 380 20, 460 130 C 540 240, 480 390, 370 450 C 260 510, 130 480, 60 400 C -10 320, -10 200, 30 130 C 40 100, 50 75, 70 50 Z"/>
+          <path fill="#6B95A4" d="M 240 10 C 360 0, 470 70, 480 200 C 490 330, 430 460, 320 480 C 210 500, 60 470, 20 340 C -10 210, 50 90, 150 40 C 195 20, 215 15, 240 10 Z"/>
         </svg>
         <div class="portrait" aria-label="Portrait of Brad Robson">
           <img src="./assets/images/brad-robson-portrait.png" alt="Brad Robson portrait" width="1122" height="1402" />
@@ -1520,7 +1565,6 @@
     toggle.addEventListener('click', function() {
       var open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open);
-      toggle.textContent = open ? '✕' : '☰';
     });
   })();
 </script>
