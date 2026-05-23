@@ -7,31 +7,31 @@
   "routes": [
     {
       "src": "/",
-      "dest": "/index.html"
+      "dest": "/public/index.html"
     },
     {
       "src": "/services",
-      "dest": "/services.html"
+      "dest": "/public/services.html"
     },
     {
       "src": "/purpose",
-      "dest": "/purpose.html"
+      "dest": "/public/purpose.html"
     },
     {
       "src": "/access-to",
-      "dest": "/access-to.html"
+      "dest": "/public/access-to.html"
     },
     {
       "src": "/insights",
-      "dest": "/insights.html"
+      "dest": "/public/insights.html"
     },
     {
       "src": "/connect",
-      "dest": "/connect.html"
+      "dest": "/public/connect.html"
     },
     {
       "src": "/([^/]+)",
-      "dest": "/$1.html"
+      "dest": "/public/$1.html"
     }
   ]
 }
