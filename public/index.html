@@ -155,11 +155,11 @@
   .wordmark .i { position: relative; display: inline-block; }
   .wordmark .i::before {
     content: ""; position: absolute;
-    top: 2px; left: 0; right: 0; margin: 0 auto;
+    top: 2px; left: 50%;
+    margin-left: -2px;
     width: 6px; height: 6px;
     background: var(--mustard);
     border-radius: 50%;
-    margin-left: 2px;
   }
 
   .menu-toggle {
@@ -950,7 +950,8 @@
   footer .wordmark-foot .i { position: relative; display: inline-block; padding: 0 1px; }
   footer .wordmark-foot .i::before {
     content: ""; position: absolute;
-    top: 1px; left: 50%; transform: translateX(-50%);
+    top: 1px; left: 50%;
+    margin-left: -2px;
     width: 4px; height: 4px;
     background: var(--mustard);
     border-radius: 50%;
